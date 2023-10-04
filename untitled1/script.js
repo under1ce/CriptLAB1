@@ -1,46 +1,62 @@
-// Функция для шифрования текста
 function encrypt() {
-    // Получаем элемент ввода текста для шифрования
-    const encryptInput = document.getElementById("encryptInput");
-    // Получаем значение сдвига из элемента ввода ключа
+    const encryptInput = document.getElementById("encryptInput").value;
     const shiftKey = parseInt(document.getElementById("shiftKey").value);
 
-    // Получаем введенный текст
-    const inputText = encryptInput.value;
-    // Шифруем текст с использованием шифра Цезаря и устанавливаем результат в текстовых полях
-    document.getElementById("outputText").value = caesarCipher(inputText, shiftKey);
-    document.getElementById("decryptInput").value = caesarCipher(inputText, shiftKey);
+    if (isNaN(shiftKey) || shiftKey < 60 || shiftKey > 70) {
+        alert("Пожалуйста, введите ключ в диапазоне [60;70]");
+        return;
+    }
+
+    // Шифрование текста
+    const encryptedText = caesarCipher(encryptInput, shiftKey);
+
+    // Отображаем результат в поле "Результата"
+    document.getElementById("outputText").value = `${encryptedText}\nZn: ${shiftKey % 94}`;
+
+    // Дублируем зашифрованный текст в поле для дешифрования
+    document.getElementById("decryptInput").value = encryptedText;
+
+    // Очищаем поля для расшифровки, ключа и для дополнительного ввода (если необходимо)
+
+    // document.getElementById("shiftKey").value = "";
+    // document.getElementById("additionalInput").value = "";
 }
 
-// Функция для дешифрования текста
 function decrypt() {
-    // Получаем элемент ввода текста для дешифрования
-    const decryptInput = document.getElementById("decryptInput");
-    // Получаем значение сдвига из элемента ввода ключа
+    const decryptInput = document.getElementById("decryptInput").value;
     const shiftKey = parseInt(document.getElementById("shiftKey").value);
 
-    // Получаем введенный текст
-    const inputText = decryptInput.value;
-    // Дешифруем текст с использованием шифра Цезаря и устанавливаем результат в текстовое поле
-    document.getElementById("outputText").value = caesarCipher(inputText, -shiftKey);
+    if (isNaN(shiftKey) || shiftKey < 60 || shiftKey > 70) {
+        alert("Пожалуйста, введите ключ в диапазоне [60;70]");
+        return;
+    }
 
-    // Очищаем поля ввода после дешифрования
+    // Расшифрование текста
+    const decryptedText = caesarCipher(decryptInput, -shiftKey);
+
+    // Отображаем результат в поле "Результата"
+    document.getElementById("outputText").value = `${decryptedText}\nZn: ${shiftKey % 94}`;
+
+    // Очищаем поля для шифрования, ключа и для дополнительного ввода (если необходимо)
     document.getElementById("decryptInput").value = "";
-    document.getElementById("encryptInput").value = "";
-    document.getElementById("shiftKey").value = "";
+
+    // document.getElementById("shiftKey").value = "";
+    // document.getElementById("additionalInput").value = "";
 }
 
-// Функция для обработки текста с использованием шифра Цезаря
+// Функция шифра Цезаря
 function caesarCipher(text, shift) {
+    const shiftzn = shift % 60; // 33 + 26 + 1
+
     return text
         .split('')
         .map(char => {
             const charCode = char.charCodeAt(0);
-
             const isAlphanumeric = (charCode >= 33 && charCode <= 126);
+            const isLetter = (charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122);
 
-            if (isAlphanumeric) {
-                const shiftedCharCode = ((charCode - 33 - shift + 94) % 94) + 33;
+            if (isAlphanumeric && !isLetter) {
+                const shiftedCharCode = ((charCode - 33 - shiftzn + 60) % 60) + 33;
                 return String.fromCharCode(shiftedCharCode);
             }
 
