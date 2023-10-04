@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caesar Cipher</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Подключение внешних стилей -->
+</head>
+
+<body>
+<div class="container">
+  <div class="block">
+    <label for="encryptInput">Введите текст для шифрования:</label>
+    <textarea id="encryptInput" rows="4" placeholder="Введите текст, используя цифры, знаки препинания и спецсимволы"></textarea>
+  </div>
+
+  <div class="block">
+    <label for="shiftKey">Введите ключ (60-70):</label>
+    <input type="number" id="shiftKey" placeholder="Значение от 60 до 70" min="60" max="70">
+  </div>
+
+  <button onclick="encrypt()">ЗАШИФРОВАТЬ</button>
+
+  <div class="block">
+    <label for="decryptInput">Введите текст для дешифрования:</label>
+    <textarea id="decryptInput" rows="4" placeholder="Полученный результат, можно расшифровать"></textarea>
+  </div>
+
+  <button onclick="decrypt()">РАСШИФРОВАТЬ</button>
+
+  <div class="block">
+    <label for="outputText">Результат:</label>
+    <textarea id="outputText" rows="4" readonly></textarea>
+  </div>
+</div>
+
+<script src="script.js"></script> <!-- Подключение внешнего JavaScript файла -->
+</body>
+
+</html>

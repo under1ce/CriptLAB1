@@ -1,0 +1,91 @@
+/* Общие стили для всего документа */
+body {
+    font-family: 'Helvetica Neue', sans-serif;  /* Шрифт текста */
+    background: #f5f5f5;  /* Цвет фона страницы */
+    color: #333;  /* Основной цвет текста */
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Стили для контейнера */
+.container {
+    max-width: 300px;  /* Максимальная ширина контейнера */
+    padding: 20px;  /* Внутренний отступ */
+    background-color: #fff;  /* Цвет фона контейнера */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Тень блока */
+    border-radius: 28px;  /* Скругление углов */
+    text-align: center;
+}
+
+/* Стили для блока */
+.block {
+    margin-bottom: 20px;  /* Внутренний отступ снизу блока */
+}
+
+/* Стили для меток */
+label {
+    display: block;
+    margin-bottom: 5px;  /* Внутренний отступ снизу метки */
+    font-weight: bold;  /* Жирный шрифт */
+    color: #555;  /* Цвет метки */
+}
+
+/* Стили для текстовых полей ввода */
+textarea, input {
+    width: calc(100% - 20px);  /* Ширина 100%, с вычетом внутренних отступов */
+    padding: 10px;  /* Внутренний отступ */
+    margin-bottom: 15px;  /* Внутренний отступ снизу */
+    box-sizing: border-box;  /* Учитываем границы и отступы внутри элемента */
+    border: 1px solid #ccc;  /* Граница с цветом */
+    border-radius: 15px;  /* Скругление углов */
+    background: #f9f9f9;  /* Цвет фона текстового поля */
+    font-size: 16px;  /* Размер шрифта */
+    color: #333;  /* Цвет текста */
+    outline: none;  /* Убираем рамку при фокусе */
+    transition: border 0.3s ease;  /* Плавное изменение цвета границы */
+}
+
+/* Стили для фокусировки на текстовых полях ввода */
+textarea:focus, input:focus {
+    border: 1px solid #4a90e2;  /* Изменение цвета границы при фокусе */
+}
+
+/* Стили для кнопки */
+button {
+    padding: 12px;  /* Внутренний отступ кнопки */
+    background: #4a90e2;  /* Цвет фона кнопки */
+    color: white;  /* Цвет текста кнопки */
+    border: none;  /* Убираем границу кнопки */
+    cursor: pointer;  /* Курсор при наведении */
+    border-radius: 15px;  /* Скругление углов */
+    font-size: 16px;  /* Размер шрифта */
+    transition: background 0.3s ease;  /* Плавное изменение цвета фона */
+}
+
+/* Стили для наведения на кнопку */
+button:hover {
+    background: #357bd8;  /* Изменение цвета фона при наведении */
+}
+
+/* Стили для вывода результата */
+#outputText {
+    width: calc(100% - 20px);  /* Ширина 100%, с вычетом внутренних отступов */
+    height: 100px;  /* Высота текстового поля */
+    resize: none;  /* Запрет на изменение размера текстового поля */
+    border: 1px solid #ccc;  /* Граница с цветом */
+    border-radius: 15px;  /* Скругление углов */
+    background: #f9f9f9;  /* Цвет фона текстового поля */
+    padding: 10px;  /* Внутренний отступ */
+    font-size: 16px;  /* Размер шрифта */
+    color: #333;  /* Цвет текста */
+    outline: none;  /* Убираем рамку при фокусе */
+    margin-bottom: 15px;  /* Внутренний отступ снизу */
+}
+
+/* Стили для фокусировки на текстовом поле вывода */
+#outputText:focus {
+    border: 1px solid #4a90e2;
+}
